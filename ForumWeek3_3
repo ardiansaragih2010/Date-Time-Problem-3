@@ -1,0 +1,40 @@
+package com.javaexcercise;
+
+import java.text.SimpleDateFormat;
+import java.util.*;
+
+public class Change_Date_Format {
+    //Ardian_Tambaraya_Saragih_2201844894
+    public static void main(String[] args)  {
+        Scanner scan = new Scanner(System.in);
+
+        System.out.println("");
+        System.out.print("Input 1 : ");
+        String tanggal = scan.nextLine();
+        String inputtanggal1 = datereformat(tanggal);
+        System.out.print("Output 1 : ");
+        System.out.println(inputtanggal1);
+
+        System.out.println("");
+        System.out.print("Input 2: ");
+        String tanggal2 = scan.nextLine();
+        String inputtanggal2 = datereformat(tanggal2);
+        System.out.print("Output 2:");
+        System.out.println(inputtanggal2);
+    }
+
+    private static String datereformat(String input) {
+        String res = "";
+        try {
+            Locale loc = new Locale("id", "ID");
+            SimpleDateFormat simpleformat = new SimpleDateFormat("dd MMMM yyyy hh:mm", loc);
+            Date dt = simpleformat.parse(input.trim());
+
+            SimpleDateFormat formatlocal = new SimpleDateFormat("dd/MM/yyyy hh:mm aa", loc);
+            res = formatlocal.format(dt);
+        } catch (Exception e) {
+            System.out.println("Invalid Format, please enter correct date format, ie : 15 april 2020 10:00]");
+        }
+        return res;
+    }
+}
